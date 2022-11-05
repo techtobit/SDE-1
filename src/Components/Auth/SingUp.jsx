@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css'
 import { Link } from 'react-router-dom';
 import '../../App.scss';
 
@@ -8,7 +10,7 @@ const SingUp = () => {
  const onSubmit = data => {
   console.log(data);
  }
-
+ const [value, setValue] = useState()
  return (
   <div className='grid lg:grid-cols-3 login-section sections'>
    <div className="left-side">
@@ -78,20 +80,20 @@ const SingUp = () => {
         </label>
 
         <label className="label flex flex-col lg:pl-4 md:pl-4 pl-0">
-         <span className="label-text">Email *</span>
-         <input type="email" placeholder="Jhonathan@abc.com"  {...register("email", {
-          required: {
-           value: true,
-           message: "Email is required"
-          },
-          pattern: {
-           value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-           message: "Email is not Valid"
-          }
-         })} className="input input-bordered pl-4 border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500" />
-         <label label='label'>
-          {errors.email?.type === 'required' && <span className='label-text-alt text-red-600'>{errors.email.message}</span>}
-          {errors.email?.type === 'pattern' && <span className='label-text-alt text-red-600'>{errors.email.message}</span>}
+         <label className="label flex flex-col">
+          <span className="label-text">Phone *</span>
+          <div className="input bg-white-200 px-4 phone-input flex">
+           <PhoneInput
+            className='phoneInput w-full max-w-md mt-1 mb-2 '
+            placeholder="Enter phone number"
+            international
+            defaultCountry="IN"
+            value={value}
+            onChange={setValue}
+            {...register("phone")}
+            required
+           />
+          </div>
          </label>
         </label>
        </li>
@@ -123,7 +125,7 @@ const SingUp = () => {
 
        </label>
        <div className="form-control mt-4 ">
-        <input type='submit' value="Sign Up" className="login-btn h-14 btn-primary font-bold text-white-200 bg-blue-200 hover:bg-blue-100" />
+        <input type='submit' value="Sign Up" className="singup-btn h-14 btn-primary font-bold text-white-200 bg-blue-200 hover:bg-blue-100" />
        </div>
       </ul>
      </form>

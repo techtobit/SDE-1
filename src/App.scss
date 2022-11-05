@@ -53,30 +53,41 @@ h2{
  font-size: $md;
  font-weight: $font-semibold;
 }
-label{
+.label{
  padding-bottom: $xs;
 }
- input{
+ .input{
  border: 1px solid $light;
  width: 298px;
  height: 48px;
  border-radius: 4px;
  color: $black;
 }
+ .login-btn,
+ .singup-btn{
+ // border: 1px solid $light;
+ width: 298px;
+ height: 48px;
+ border-radius: 4px;
+}
 .form-optional{
   width: 298px;
 }
 
-input:focus{
+.input:focus{
      outline: none !important;
      border: 2px solid $primary;
     // box-shadow: 0 0 10px #719ECE;
 }
-input:hover{
+.input:hover{
   border: 2px solid $primary;
 }
 .label:hover{
  color: $primary;
+}
+input:focus{
+     outline: none !important;
+     border: 0;
 }
 
 
