@@ -10,6 +10,9 @@ const Login = () => {
     console.log(data);
   }
 
+  const loginWithGoogle = () => {
+
+  }
 
   return (
     <div className='grid lg:grid-cols-3 login-section sections'>
@@ -28,7 +31,7 @@ const Login = () => {
         </div>
         <div className="form pt-7">
           <form onSubmit={handleSubmit(onSubmit)} className="form-control">
-            <div className="flex flex-col items-start input ">
+            <div className="flex flex-col items-start input">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
@@ -78,6 +81,13 @@ const Login = () => {
               <input type='submit' value="login" className="login-btn h-14 btn-primary font-bold text-white-200 bg-blue-200 hover:bg-blue-100" />
             </div>
           </form>
+          {/* {signInError} */}
+          <div class="label pt-4 text-sm">
+            <p className='label-text-alt'>Don't have an account? <Link to='/singup' class="label-text-alt link link-hover underline text-neutral font-bold text-md">Create an account</Link></p>
+          </div>
+          {/* <div class="form-control mt-6">
+            <button onClick={loginWithGoogle} class="btn btn-neutral" >login With Google</button>
+          </div> */}
         </div>
       </div>
     </div>
