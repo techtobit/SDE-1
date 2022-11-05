@@ -57,7 +57,7 @@ h2{
  padding-bottom: $xs;
 }
  .input{
- border: 1px solid $light;
+ border: 1.5px solid $light;
  width: 298px;
  height: 48px;
  border-radius: 4px;
@@ -65,7 +65,6 @@ h2{
 }
  .login-btn,
  .singup-btn{
- // border: 1px solid $light;
  width: 298px;
  height: 48px;
  border-radius: 4px;
@@ -76,8 +75,7 @@ h2{
 
 .input:focus{
      outline: none !important;
-     border: 2px solid $primary;
-    // box-shadow: 0 0 10px #719ECE;
+     border: 1px solid $primary;
 }
 .input:hover{
   border: 2px solid $primary;

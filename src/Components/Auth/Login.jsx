@@ -31,7 +31,7 @@ const Login = () => {
         </div>
         <div className="form pt-7">
           <form onSubmit={handleSubmit(onSubmit)} className="form-control">
-            <div className="flex flex-col items-start input">
+            <div className="flex flex-col items-start pb-6">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>

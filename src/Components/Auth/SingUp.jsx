@@ -131,7 +131,7 @@ const SingUp = () => {
      </form>
      {/* {signInError} */}
      <div class="label pt-4 text-sm">
-      <p className='label-text-alt'>Already have account? <Link to='/login' class="label-text-alt link link-hover underline text-neutral font-bold text-md">Login</Link></p>
+      <p className='label-text-alt'>Already have account? <Link to='/' class="label-text-alt link link-hover underline text-neutral font-bold text-md">Login</Link></p>
      </div>
      {/* <div class="form-control mt-6">
             <button onClick={loginWithGoogle} class="btn btn-neutral" >login With Google</button>
