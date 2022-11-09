@@ -14,6 +14,7 @@ $primary : #6360AB;
 $secondary : #444278;
 $accent : #ffff;
 $light : #DCDCE4;
+$gary : #F7F7F7;
 $black : #000000;
 
 // theme sizes
@@ -105,4 +106,45 @@ input:focus{
 
 .right-side{
  
+}
+
+
+// File Upload Section
+.upload-container{
+  min-width: 380px;
+  min-height: 230px; 
+  background-color: $gary;
+  border: 2px dashed $light;
+  border-radius: 10px;
+
+
+  .file-inputs{
+    min-height: 100px;
+    position: relative;
+    .input-field{
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+    }
+    .browse-input-btn{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left:  0;
+      width: 100%;
+      height: 100%;
+
+      z-index: 1;
+      cursor: pointer;
+
+      .brows-btn{
+      border: 2px solid $primary;
+      }
+      
+      }
+    // .browse-input-btn:hover{
+    //   background-color: $secondary;
+    //   color: $accent;
+    // }
+  }
 }
