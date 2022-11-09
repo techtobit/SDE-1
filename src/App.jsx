@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       {/* <MediaLibrary /> */}
       <Routes>
-        <Route path='/' element={<Login />}></Route>
+        <Route path='/login' element={<Login />}></Route>
         <Route path='/singup' element={<SingUp />}></Route>
-        <Route path='/library' element={<MediaLibrary />} />
+        <Route path='/' element={<MediaLibrary />} />
       </Routes>
       {/* <Login />
       <SingUp></SingUp> */}

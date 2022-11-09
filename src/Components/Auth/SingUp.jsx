@@ -21,7 +21,6 @@ const SingUp = () => {
     console.log(data);
     console.log(email, password);
     createUserWithEmailAndPassword(email, password)
-    navigate('/')
 
   }
 
