@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login />}></Route>
         <Route path='/singup' element={<SingUp />}></Route>
+        <Route path='/library' element={<MediaLibrary />} />
       </Routes>
       {/* <Login />
       <SingUp></SingUp> */}

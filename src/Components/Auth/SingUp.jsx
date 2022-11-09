@@ -1,16 +1,32 @@
 import React, { useState } from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import '../../App.scss';
+import auth from '../../firebase.init';
 
 const SingUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [value, setValue] = useState(null)
+  const navigate = useNavigate();
+  const [
+    createUserWithEmailAndPassword, user, loading, error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+
   const onSubmit = data => {
+    const email = data.email;
+    const password = data.password;
     console.log(data);
+    console.log(email, password);
+    createUserWithEmailAndPassword(email, password)
+    navigate('/')
+
   }
-  const [value, setValue] = useState()
+
+
+
   return (
     <div className='grid lg:grid-cols-3 login-section sections'>
       <div className="left-side">
