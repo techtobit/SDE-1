@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaPlusCircle } from "react-icons/fa";
 import FileUpload from './FileUpload';
+import Modal from './Modal';
 
 const MediaLibrary = () => {
  return (
@@ -11,10 +12,10 @@ const MediaLibrary = () => {
      <p>0 Image</p>
     </div>
     <div className="right-heading ">
-     <button className='w-48 h-11 bg-blue-200 rounded text-white-200 flex items-center justify-center'><span className='pr-2'> <FaPlusCircle /></span> Upload Image</button>
+     <label htmlFor='upload-modal' className='btn w-48 h-11 bg-blue-200 rounded text-white-200 flex items-center justify-center'><span className='pr-2'> <FaPlusCircle /></span> Upload Image</label>
     </div>
    </div>
-   <FileUpload></FileUpload>
+   <Modal></Modal>
   </div>
  );
 };
