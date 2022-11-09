@@ -1,17 +1,14 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
- apiKey: "AIzaSyAaYdfArGgBmq_8hSp573Ky2a4TM-zSOw4",
- authDomain: "rsquare-web-studio.firebaseapp.com",
- projectId: "rsquare-web-studio",
- storageBucket: "rsquare-web-studio.appspot.com",
- messagingSenderId: "149161649099",
- appId: "1:149161649099:web:335a7d81f8879a0e128c4e"
+ apiKey: import.meta.env.VITE_APP_apiKey,
+ authDomain: import.meta.env.VITE_APP_authDomain,
+ projectId: import.meta.env.VITE_APP_projectId,
+ storageBucket: import.meta.env.VITE_APP_storageBucket,
+ messagingSenderId: import.meta.env.VITE_APP_messagingSenderId,
+ appId: import.meta.env.VITE_APP_appId
 };
 
 // Initialize Firebase

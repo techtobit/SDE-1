@@ -6,6 +6,7 @@ import 'react-phone-number-input/style.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import '../../App.scss';
 import auth from '../../firebase.init';
+import bcrypt from 'bcryptjs'
 
 const SingUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -18,10 +19,11 @@ const SingUp = () => {
   const onSubmit = data => {
     const email = data.email;
     const password = data.password;
+    const hashedPassword = bcrypt.hashSync(password, 10)
     console.log(data);
-    console.log(email, password);
+    console.log(email, password, hashedPassword);
     createUserWithEmailAndPassword(email, password)
-
+    navigate('/login')
   }
 
 

@@ -1,18 +1,30 @@
 import React from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../App.scss';
+import auth from '../../firebase.init';
+import bcrypt from 'bcryptjs'
 
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
   const onSubmit = data => {
-    console.log(data);
+    const email = data.email;
+    const password = data.password;
+    // const checkHashedPassword = bcrypt.compareSync(password, 10)
+    console.log(password, email);
+    signInWithEmailAndPassword(email, password)
+    navigate('/')
   }
 
-  const loginWithGoogle = () => {
-
-  }
 
   return (
     <div className='grid lg:grid-cols-3 login-section sections'>
@@ -85,9 +97,6 @@ const Login = () => {
           <div class="label pt-4 text-sm">
             <p className='label-text-alt'>Don't have an account? <Link to='/singup' class="label-text-alt link link-hover underline text-neutral font-bold text-md">Create an account</Link></p>
           </div>
-          {/* <div class="form-control mt-6">
-            <button onClick={loginWithGoogle} class="btn btn-neutral" >login With Google</button>
-          </div> */}
         </div>
       </div>
     </div>
