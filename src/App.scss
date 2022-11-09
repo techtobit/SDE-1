@@ -54,7 +54,7 @@ h2{
  font-size: $md;
  font-weight: $font-semibold;
 }
-.label{
+.labels{
  padding-bottom: $xs;
 }
  .input{
@@ -81,7 +81,7 @@ h2{
 .input:hover{
   border: 2px solid $primary;
 }
-.label:hover{
+.labels:hover{
  color: $primary;
 }
 input:focus{
@@ -142,10 +142,7 @@ input:focus{
       }
       
       }
-    // .browse-input-btn:hover{
-    //   background-color: $secondary;
-    //   color: $accent;
-    // }
+
   }
 }
 

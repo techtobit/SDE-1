@@ -33,7 +33,7 @@ const Login = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="form-control">
             <div className="flex flex-col items-start pb-6">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text ">Email</span>
               </label>
               <input type="email" placeholder="Jhonathan@abc.com"  {...register("email", {
                 required: {

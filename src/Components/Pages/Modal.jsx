@@ -11,7 +11,7 @@ const Modal = () => {
      <div className=" pb-4">
       <div className=" flex justify-between items-center border-b-2 border-white-100">
        <p className="section-title font-bold">Upload New Image</p>
-       <label htmlFor="upload-modal" className="btn btn-sm bg-white-200 text-black-200 border-0 hover:border-0 hover:bg-white-100">X</label>
+       <label htmlFor="upload-modal" className="btn btn-sm bg-white-200 text-black-200 border-0 hover:border-0 hover:bg-white-200">X</label>
       </div>
      </div>
 

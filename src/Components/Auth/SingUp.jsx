@@ -32,8 +32,8 @@ const SingUp = () => {
             <ul className=''>
               {/* first & last name section  */}
               <li className='flex lg:flex-row md:flex-row flex-col'>
-                <label className="label flex flex-col">
-                  <span className="label-text">First Name *</span>
+                <label className="labels flex flex-col">
+                  <span className="labels-text text-start">First Name *</span>
                   <input type="text" placeholder="Jhon"  {...register("firstName", {
                     required: {
                       value: true,
@@ -46,8 +46,8 @@ const SingUp = () => {
                   </label>
                 </label>
 
-                <label className="label flex flex-col lg:pl-4 md:4 pl-0">
-                  <span className="label-text">Last Name *</span>
+                <label className="labels flex flex-col lg:pl-4 md:4 pl-0">
+                  <span className="labels-text">Last Name *</span>
                   <input type="text" placeholder="Alex"  {...register("lastName", {
                     required: {
                       value: true,
@@ -61,8 +61,8 @@ const SingUp = () => {
               </li>
               {/* email phone number section  */}
               <li className='flex  lg:flex-row md:flex-row flex-col'>
-                <label className="label flex flex-col">
-                  <span className="label-text">Email *</span>
+                <label className="labels flex flex-col">
+                  <span className="labels-text">Email *</span>
                   <input type="email" placeholder="Jhonathan@abc.com"  {...register("email", {
                     required: {
                       value: true,
@@ -79,9 +79,9 @@ const SingUp = () => {
                   </label>
                 </label>
 
-                <label className="label flex flex-col lg:pl-4 md:pl-4 pl-0">
-                  <label className="label flex flex-col">
-                    <span className="label-text">Phone *</span>
+                <label className="labels flex flex-col lg:pl-4 md:pl-4 pl-0">
+                  <label className="labels flex flex-col">
+                    <span className="labels-text">Phone *</span>
                     <div className="input bg-white-200 px-4 phone-input flex">
                       <PhoneInput
                         className='phoneInput w-full max-w-md mt-1 mb-2 '
@@ -100,8 +100,8 @@ const SingUp = () => {
 
               {/* Password  section  */}
               <li className='flex'>
-                <label className="label flex flex-col">
-                  <span className="label-text">Password *</span>
+                <label className="labels flex flex-col">
+                  <span className="labels-text">Password *</span>
                   <input type="password" placeholder="password" {...register("password", {
                     required: {
                       value: true,
@@ -119,7 +119,7 @@ const SingUp = () => {
                   </label>
                 </label>
               </li>
-              <label className="label flex items-center align-middle">
+              <label className="labels flex items-center align-middle">
                 <input type="checkbox" class="w-4 accent-blue-200 cursor-pointer" />
                 <p className='pl-2 text-sm'>By signing up, you agree to our <span className='text-blue-200'>User Agreement,</span> <span className='text-blue-200'>Terms of Service,</span> & <span className='text-blue-200'>Privacy Policy</span></p>
 
@@ -130,8 +130,8 @@ const SingUp = () => {
             </ul>
           </form>
           {/* {signInError} */}
-          <div class="label pt-4 text-sm">
-            <p className='label-text-alt'>Already have account? <Link to='/' class="label-text-alt link link-hover underline text-neutral font-bold text-md">Login</Link></p>
+          <div class="labels pt-4 text-sm">
+            <p className='label-text-alt'>Already have account? <Link to='/' class="labels-text-alt link link-hover underline text-neutral font-bold text-md">Login</Link></p>
           </div>
           {/* <div class="form-control mt-6">
             <button onClick={loginWithGoogle} class="btn btn-neutral" >login With Google</button>
