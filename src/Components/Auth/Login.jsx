@@ -25,7 +25,6 @@ const Login = () => {
     const { data } = await axios.post('http://localhost:5000/login', { email });
     console.log(`AccessToken ${data}`);
     localStorage.setItem('AccessToken', data)
-
   }
   if (loading) {
     return <Loading></Loading>

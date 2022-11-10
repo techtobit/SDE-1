@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss'
 import Login from './Components/Auth/Login'
@@ -20,8 +21,7 @@ function App() {
           </RequireAuth>
         } />
       </Routes>
-      {/* <Login />
-      <SingUp></SingUp> */}
+      <Toaster />
     </div>
   )
 }

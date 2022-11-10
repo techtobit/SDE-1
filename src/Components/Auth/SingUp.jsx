@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'
@@ -7,6 +7,10 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import '../../App.scss';
 import auth from '../../firebase.init';
 import bcrypt from 'bcryptjs'
+import Loading from '../Shared/Loading';
+import { async } from '@firebase/util';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const SingUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -15,18 +19,33 @@ const SingUp = () => {
   const [
     createUserWithEmailAndPassword, user, loading, error,
   ] = useCreateUserWithEmailAndPassword(auth);
+  const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
     const email = data.email;
     const password = data.password;
     const hashedPassword = bcrypt.hashSync(password, 10)
     console.log(data);
     console.log(email, password, hashedPassword);
-    createUserWithEmailAndPassword(email, password)
+    await createUserWithEmailAndPassword(email, password)
+    const success = await sendEmailVerification();
+    if (success) {
+      axios.post('http://localhost:5000/singup', data)
+        .then(response => console.log(response))
+      toast.success('Successfully created,Verify your email')
+    }
+
     navigate('/login')
+
+  }
+  if (sending) {
+    return <Loading></Loading>
   }
 
-
+  if (error || error2) {
+    alert(error, error2)
+    toast.error(`Error ${error} ${error2} `)
+  }
 
   return (
     <div className='grid lg:grid-cols-3 login-section sections'>
