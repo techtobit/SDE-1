@@ -5,26 +5,31 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../../App.scss';
 import auth from '../../firebase.init';
 import bcrypt from 'bcryptjs'
+import axios from 'axios';
+import Loading from '../Shared/Loading';
 
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const [
-    signInWithEmailAndPassword,
-    user,
-    loading,
-    error,
+    signInWithEmailAndPassword, user, loading, error,
   ] = useSignInWithEmailAndPassword(auth);
-  const onSubmit = data => {
-    const email = data.email;
-    const password = data.password;
-    // const checkHashedPassword = bcrypt.compareSync(password, 10)
-    console.log(password, email);
-    signInWithEmailAndPassword(email, password)
-    navigate('/')
-  }
 
+  const onSubmit = async e => {
+    const email = e.email;
+    const password = e.password;
+    // const checkHashedPassword = bcrypt.compareSync(password, 10)
+    await signInWithEmailAndPassword(email, password)
+    navigate('/')
+    const { data } = await axios.post('http://localhost:5000/login', { email });
+    console.log(`AccessToken ${data}`);
+    localStorage.setItem('AccessToken', data)
+
+  }
+  if (loading) {
+    return <Loading></Loading>
+  }
 
   return (
     <div className='grid lg:grid-cols-3 login-section sections'>
