@@ -18,8 +18,8 @@ const SingUp = () => {
   const navigate = useNavigate();
   const [
     createUserWithEmailAndPassword, user, loading, error,
-  ] = useCreateUserWithEmailAndPassword(auth);
-  const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
+  ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  // const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth,{});
 
   const onSubmit = async data => {
     const email = data.email;
@@ -28,24 +28,25 @@ const SingUp = () => {
     console.log(data);
     console.log(email, password, hashedPassword);
     await createUserWithEmailAndPassword(email, password)
-    const success = await sendEmailVerification();
-    if (success) {
-      axios.post('http://localhost:5000/singup', data)
-        .then(response => console.log(response))
-      toast.success('Successfully created,Verify your email')
-    }
+
+    // const success = await sendEmailVerification();
+    // if (success) {
+    //   axios.post('http://localhost:5000/singup', data)
+    //     .then(response => console.log(response))
+    //   toast.success('Successfully created,Verify your email')
+    // }
 
     navigate('/login')
 
   }
-  if (sending) {
-    return <Loading></Loading>
-  }
+  // if (sending) {
+  //   return <Loading></Loading>
+  // }
 
-  if (error || error2) {
-    alert(error, error2)
-    toast.error(`Error ${error} ${error2} `)
-  }
+  // if (error || error2) {
+  //   alert(error, error2)
+  //   toast.error(`Error ${error} ${error2} `)
+  // }
 
   return (
     <div className='grid lg:grid-cols-3 login-section sections'>

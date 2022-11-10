@@ -22,19 +22,29 @@ async function run() {
   const userCollection = client.db("test").collection("users");
 
   // JWT Login Auth
-  app.post('/login', async (req, res) => {
+  app.post('/jwt', (req, res) => {
    const user = req.body;
-   const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN, {
-    expiresIn: '1d'
-   })
-   res.send(accessToken)
-  })
+   const token = jwt.sign(user, process.env.ACCESS_TOKEN);
+   res.cookie('token', token, { httpOnly: true });
+   res.json({ token });
+  });
+
+  //JWT 
+  // app.post('/login', async (req, res) => {
+  //  const user = req.body;
+  //  const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN, {
+  //   expiresIn: '1d'
+  //  })
+  //  res.send(accessToken)
+  // })
 
   app.post('/singup', async (req, res) => {
    const user = req.body;
    const userData = await userCollection.insertOne(user).toArray;
    res.send(userData);
   })
+
+
 
 
   app.get('/data', async (req, res) => {

@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import bcrypt from 'bcryptjs'
 import axios from 'axios';
 import Loading from '../Shared/Loading';
+import Cookies from 'js-cookie';
 
 
 const Login = () => {
@@ -22,10 +23,17 @@ const Login = () => {
     // const checkHashedPassword = bcrypt.compareSync(password, 10)
     await signInWithEmailAndPassword(email, password)
     navigate('/')
-    const { data } = await axios.post('http://localhost:5000/login', { email });
-    console.log(`AccessToken ${data}`);
-    localStorage.setItem('AccessToken', data)
+    // const { data } = await axios.post('http://localhost:5000/login', { email });
+    // console.log(`AccessToken ${data}`);
+    // localStorage.setItem('AccessToken', data)
+    const getJwt = async () => {
+      const { data } = await axios.post(`http://localhost:5000/jwt`);
+      Cookies.set(data.token, { httpOnly: true });
+      setJwt(data.token, { httpOnly: true })
+    }
+    getJwt();
   }
+
   if (loading) {
     return <Loading></Loading>
   }
