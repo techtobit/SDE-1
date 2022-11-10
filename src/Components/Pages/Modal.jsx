@@ -1,8 +1,12 @@
 import React from 'react';
 import FileUpload from './FileUpload';
 import '../../App.scss'
+import RequireAuth from '../Auth/RequireAuth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Modal = () => {
+
  return (
   <div>
    <input type="checkbox" id="upload-modal" className="modal-toggle" />
