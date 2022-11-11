@@ -4,7 +4,16 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 require('dotenv').config()
 const cors = require('cors');
 let jwt = require('jsonwebtoken');
+const multer = require('multer');
 const port = process.env.PORT || 5000;
+const UPLOAD_FOLDER = './Upload';
+
+
+//save uploaded img
+
+var upload = multer({
+ dest: UPLOAD_FOLDER
+});
 
 //Middleware
 app.use(express.static("public"));
@@ -43,6 +52,15 @@ async function run() {
    const userData = await userCollection.insertOne(user).toArray;
    res.send(userData);
   })
+
+
+  //Img upload Api 
+  app.post('/', upload.single('avatar'), (req, res) => {
+   res.send('Hello Uploaded')
+  })
+  // app.post('/', upload.array('avatar', 12), function async(req, res, next) {
+
+  // })
 
 
 
